@@ -1,0 +1,201 @@
+.vehicle-categories {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 6rem 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.vehicle-categories .vehicle-categories-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+
+.vehicle-categories .vehicle-categories-top h1 {
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+
+.vehicle-categories .vehicle-categories-top p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.vehicle-categories .vehicle-categories-top .chips {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.vehicle-categories .vehicle-categories-top .chips .chip {
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.vehicle-categories .categories {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.category {
+    height: 400px;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.category img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: left;
+}
+
+.view-more-btn {
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+    margin: 1rem 0;
+    position: relative;
+}
+
+.view-more-btn button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--black);
+    background-color: var(--bgGrey);
+    border-radius: 100vw;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.view-more-btn button:hover {
+    background-color: var(--white);
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1366px) {
+    .vehicle-categories {
+        padding: 6rem 3.5rem;
+    }
+
+    .category {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .vehicle-categories {
+        padding: 3.5rem;
+        gap: 1rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top {
+        width: 80%;
+    }
+
+    .vehicle-categories .vehicle-categories-top h1 {
+        font-size: 3rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top p {
+        font-size: 1.1rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top .chips {
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top .chips .chip {
+        padding: 0.2rem 0.8rem;
+        font-size: 1rem;
+    }
+
+    .category {
+        height: 300px;
+    }
+
+    .view-more-btn {
+        margin: 2rem 0;
+    }
+
+    .view-more-btn button {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle-categories {
+        padding: 3rem 1rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top {
+        width: 100%;
+    }
+
+    .vehicle-categories .vehicle-categories-top h1 {
+        font-size: 2rem;
+    }
+
+    .vehicle-categories .vehicle-categories-top p {
+        font-size: 1rem;
+    }
+
+    .category {
+        height: 250px;
+    }
+
+    .view-more-btn button {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vehicle-categories {
+        padding: 3rem 0.5rem;
+    }
+
+    .vehicle-categories .categories {
+        grid-gap: 0.5rem;
+    }
+
+    .category {
+        height: 150px;
+    }
+
+    .view-more-btn {
+        margin: 1.5rem 0;
+    }
+
+    .view-more-btn button {
+        padding: 0.4rem 1.1rem;
+    }
+}
