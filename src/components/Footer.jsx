@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <h1>Crafted by <Link to="https://prateek-sharma.netlify.app/" target='_blank'>Prateek Sharma</Link></h1>
+                    <h1>Crafted by <Link to="https://prateeksharma.xyz" target='_blank'>Prateek Sharma</Link></h1>
                 </div>
             </div>
         </footer>
