@@ -1,0 +1,27 @@
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build directories
+dist/
+dist-ssr/
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# System files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,113 @@
+.vehicle-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bgGrey);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 6rem 8rem;
+}
+
+.vehicle-search-section {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.vehicles {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    border-radius: 1rem;
+}
+
+.vehicle-heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vehicle-heading h2 {
+    font-size: 1.5rem;
+}
+
+.vehicle-heading .sort {
+    position: relative;
+}
+
+.vehicle-heading .sort select {
+    background-color: var(--white);
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    appearance: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    border: 1px solid var(--black);
+}
+
+.vehicle-heading .sort select:focus {
+    border: 1px solid var(--black);
+    outline: 1px solid var(--black);
+}
+
+.vehicle-heading .sort i {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(0, -50%);
+}
+
+@media screen and (max-width: 1366px) {
+    .vehicle-page {
+        padding: 6rem 3.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .vehicles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vehicle-heading h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle-page {
+        padding: 4rem 1rem;
+        gap: 1rem;
+    }
+
+    .vehicles {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px #0000004d;
+    }
+
+    .vehicle-heading {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .vehicle-heading .sort select {
+        padding: 0.4rem 1.6rem 0.4rem 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vehicle-page {
+        padding: 3.5rem 0.5rem;
+    }
+
+    .vehicle-heading h2 {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,189 @@
+.vehicle {
+    overflow: hidden;
+    background-color: var(--white);
+    position: relative;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 20px 40px #0000004d;
+}
+
+.vehicle-skeleton {
+    height: 450px;
+    border-radius: 1rem;
+    background-color: var(--white);
+}
+
+.vehicle img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.7rem;
+}
+
+.vehicle-name,
+.vehicle-actions {
+    width: 100%;
+}
+
+.vehicle-name {
+    width: 100%;
+}
+
+.vehicle-name h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: var(--textDarkGrey);
+}
+
+.vehicle-name h1 {
+    font-size: 1.5rem;
+}
+
+.vehicle-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.vehicle-actions .price {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.vehicle-actions .price span {
+    color: var(--textDarkGrey);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.vehicle-actions button {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 0.5rem;
+    border: none;
+    transition: all 0.2s;
+}
+
+.vehicle-actions button:focus {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+}
+
+/* .vehicle-actions button:active {
+    transform: scale(0.95);
+} */
+
+.vehicle-actions button:disabled {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+.vehicle-search-response {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vehicle-search-response .vehicle-search-response-icon {
+    height: 5rem;
+    width: 5rem;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.vehicle-search-response .vehicle-search-response-icon i {
+    color: var(--white);
+}
+
+.vehicle-search-response p {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1366px) {
+    .vehicle-skeleton {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .vehicle {
+        box-shadow: none;
+    }
+
+    .vehicle-skeleton {
+        height: 300px;
+    }
+
+    .vehicle-actions .price {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle {
+        border-radius: 0;
+        padding: 0.7rem;
+        gap: 0.7rem;
+    }
+
+    .vehicle-skeleton {
+        border-radius: 0;
+    }
+
+    .vehicle img {
+        height: 300px;
+    }
+
+    .vehicle-skeleton {
+        height: 350px;
+        background-origin: 0.7rem;
+    }
+
+    .vehicle-actions {
+        flex-direction: column;
+        align-items: start;
+        gap: 0.5rem;
+    }
+
+    .vehicle-actions .price {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-actions button {
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vehicle img {
+        height: 200px;
+    }
+
+    .vehicle-skeleton {
+        height: 200px;
+    }
+}

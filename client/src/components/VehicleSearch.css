@@ -1,0 +1,113 @@
+.vehicle-search {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vehicle-search img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    filter: brightness(0.3);
+}
+
+.vehicle-search h1 {
+    /* font-family: "Montserrat", sans-serif; */
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 120%;
+    width: 100%;
+    /* max-width: 600px; */
+}
+
+.vehicle-search .search-input {
+    width: 100%;
+    max-width: 700px;
+    height: 3rem;
+    position: relative;
+}
+
+.vehicle-search .search-input input {
+    height: 100%;
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.vehicle-search .search-input i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vehicle-search input:focus {
+    outline: 2px solid var(--black);
+}
+
+@media screen and (max-width: 1366px) {
+    /* .vehicle-search {
+        height: 400px;
+    } */
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle-search {
+        /* height: 300px; */
+        padding: 1rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .vehicle-search h1 {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-search .search-input {
+        height: 2.5rem;
+    }
+
+    .vehicle-search .search-input input {
+        padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .vehicle-search .search-input i {
+        height: 2.5rem;
+        width: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vehicle-search {
+        padding: 1rem;
+    }
+}

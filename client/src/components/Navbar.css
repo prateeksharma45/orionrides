@@ -1,0 +1,305 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    background-color: var(--white);
+}
+
+header::before,
+header::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    z-index: -1;
+    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+header::before {
+    left: 1rem;
+    box-shadow: -1rem -1rem var(--white);
+}
+
+header::after {
+    right: 1rem;
+    box-shadow: 1rem -1rem var(--white);
+}
+
+nav {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 9rem;
+    background-color: var(--white);
+}
+
+.nav-left a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-right a {
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    border-radius: 100vw;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-right a:hover {
+    background-color: var(--bgGrey);
+}
+.nav-right a.active {
+    background-color: var(--bgGrey);
+}
+
+.nav-right .nav-right-btn button {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    border-radius: 100vw;
+    text-decoration: none;
+    background-color: transparent;
+    background-color: var(--black);
+    color: var(--white);
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s;
+}
+
+.profile-icon {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--bgGrey);
+    border-radius: 50%;
+    margin-left: 1rem;
+    overflow: hidden;
+    outline: 0.3rem solid transparent;
+    transition: outline 0.3s;
+}
+
+.profile-icon img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.profile-icon:hover {
+    outline: 0.3rem solid var(--bgGrey);
+}
+
+.menu-icon {
+    display: none;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--bgGrey);
+    border-radius: 50%;
+}
+
+.hamburger {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1px;
+    width: 20px;
+    background-color: transparent;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    border-radius: 100vw;
+    background-color: var(--black);
+    transition: all 0.2s;
+}
+
+.hamburger::before {
+    transform: translate(0, -4px);
+}
+.hamburger::after {
+    transform: translate(0, 4px);
+}
+
+.menu-active .hamburger::before {
+    transform: translate(0) rotate(45deg);
+}
+
+.menu-active .hamburger::after {
+    transform: translate(0) rotate(-45deg);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    padding: 4.5rem 1rem 1rem 1rem;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu::before,
+.menu::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    z-index: -1;
+    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+.menu::before {
+    left: 0.5rem;
+    box-shadow: -1rem -1rem var(--white);
+}
+
+.menu::after {
+    right: 0.5rem;
+    box-shadow: 1rem -1rem var(--white);
+}
+
+.menu .menu-profile {
+    cursor: pointer;
+    width: 100%;
+    background-color: var(--bgGrey);
+    border-radius: 0.7rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu .menu-profile .menu-profile-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu .menu-profile .menu-profile-icon img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.menu .menu-profile .menu-profile-dets h1 {
+    font-size: 1.2rem;
+}
+
+.menu .menu-profile .menu-profile-dets h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.menu > h1 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-links a {
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 100vw;
+    text-decoration: none;
+    padding: 0.2rem 1rem;
+    color: var(--black);
+    font-weight: 500;
+}
+
+.menu-links a.active {
+    background-color: var(--bgGrey);
+}
+
+.menu-links .menu-btn button {
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    border-radius: 100vw;
+    text-decoration: none;
+    background-color: transparent;
+    background-color: var(--black);
+    color: var(--white);
+    font-weight: 500;
+    border: none;
+}
+
+@media screen and (max-width: 1366px) {
+    header::before {
+        left: 0.5rem;
+    }
+
+    header::after {
+        right: 0.5rem;
+    }
+
+    nav {
+        padding: 1rem 4rem;
+    }
+
+    .nav-left a {
+        font-size: 1.5rem;
+    }
+
+    .nav-right a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-right {
+        gap: 0.5rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 0.5rem 1rem;
+    }
+    .nav-right {
+        display: none;
+    }
+    .menu-icon {
+        display: block;
+    }
+}

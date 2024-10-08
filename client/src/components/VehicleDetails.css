@@ -1,0 +1,372 @@
+.vehicle-details-page {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bgGrey);
+}
+
+.vehicle-details {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1920px;
+    background-color: var(--bgGrey);
+    margin: 0 auto;
+    padding: 6rem 8rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.vehicle-details-image {
+    height: fit-content;
+    position: sticky;
+    top: 7rem;
+    display: flex;
+    cursor: pointer;
+}
+
+.vehicle-details-image img {
+    height: 450px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vehicle-details-image .location {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100vw;
+    background-color: var(--white);
+    font-weight: 600;
+}
+
+.vehicle-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vehicle-info .vehicle-info-name h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--textDarkGrey);
+}
+
+.vehicle-info .vehicle-info-name h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+}
+
+.vehicle-info .vehicle-info-name .rating {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.vehicle-info .vehicle-info-name .rating .stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    gap: 0.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100vw;
+    background-color: var(--white);
+    font-weight: 600;
+}
+
+.vehicle-info .vehicle-info-name .rating .stars .star i {
+    color: var(--orange);
+}
+
+.vehicle-info p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--textDarkGrey);
+}
+
+.vehicle-info-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-info-actions .price {
+    font-size: 2rem;
+}
+
+.vehicle-info-actions .price span {
+    color: var(--textDarkGrey);
+    font-size: 1.5rem;
+}
+
+.vehicle-info-actions p {
+    color: var(--black);
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+.vehicle-info-actions p span {
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+
+.vehicle-info-actions p span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+    transition: width 0.2s;
+}
+
+.vehicle-info-actions p span:hover::before {
+    width: 0%;
+    left: unset;
+    right: 0;
+}
+
+.vehicle-info-actions button {
+    width: fit-content;
+    cursor: pointer;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+}
+
+.vehicle-info-actions button:active {
+    transform: scale(0.95);
+}
+
+.vehicle-info-actions button:focus {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+}
+
+.vehicle-info-actions button:disabled {
+    filter: opacity(0.5);
+    cursor: not-allowed;
+}
+
+.vehicle-info-actions button:disabled:active {
+    transform: scale(1);
+}
+
+.vehicle-specs {
+    width: 100%;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.vehicle-specs table {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.vehicle-specs table caption {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.vehicle-specs table tbody {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-specs table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    padding: 0.3rem 0;
+}
+
+.vehicle-specs table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--bgGrey);
+}
+
+.vehicle-specs table tbody tr td:first-child {
+    font-weight: 600;
+}
+
+.vehicle-specs table tbody tr td {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1366px) {
+    .vehicle-details {
+        padding: 6rem 3.5rem;
+    }
+
+    .vehicle-details-image {
+        top: 6.5rem;
+    }
+
+    .vehicle-details-image img {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .vehicle-details {
+        gap: 1rem;
+    }
+
+    .vehicle-details-image img {
+        height: 300px;
+    }
+
+    .vehicle-details .location {
+        padding: 0.3rem 0.8rem;
+    }
+
+    .vehicle-info .vehicle-info-name h2 {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-info .vehicle-info-name h1 {
+        font-size: 2.5rem;
+    }
+
+    .vehicle-info .vehicle-info-name .rating .stars {
+        padding: 0.3rem 0.8rem;
+    }
+
+    .vehicle-info p {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-info-actions .price span {
+        font-size: 1.4rem;
+    }
+
+    .vehicle-info-actions button {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle-details {
+        padding: 4rem 1rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .vehicle-details-image {
+        position: relative;
+        top: unset;
+    }
+
+    .vehicle-details-image img {
+        height: 350px;
+        border-radius: 0.7rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .vehicle-details .location {
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .vehicle-info .vehicle-info-name h2 {
+        font-size: 1rem;
+    }
+
+    .vehicle-info .vehicle-info-name h1 {
+        font-size: 2.5rem;
+    }
+
+    .vehicle-info .vehicle-info-name .rating .stars {
+        padding: 0.2rem 0.6rem;
+    }
+
+    .vehicle-info .vehicle-info-name .rating .stars .star {
+        font-size: 0.8rem;
+    }
+
+    .vehicle-info p {
+        font-size: 1rem;
+    }
+
+    .vehicle-info-actions .price {
+        font-size: 1.5rem;
+    }
+
+    .vehicle-info-actions .price span {
+        font-size: 1.3rem;
+    }
+
+    .vehicle-info-actions p {
+        font-size: 1rem;
+    }
+
+    .vehicle-info-actions button {
+        font-size: 1.3rem;
+    }
+
+    .vehicle-specs {
+        border-radius: 0.7rem;
+        padding: 0.7rem;
+    }
+
+    .vehicle-specs table caption {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-specs table tbody tr td {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vehicle-details {
+        padding: 3.5rem 0.5rem;
+    }
+
+    .vehicle-details-image img {
+        height: 250px;
+    }
+
+    .vehicle-info .vehicle-info-name h1 {
+        font-size: 2rem;
+    }
+
+    .vehicle-info-actions .price {
+        font-size: 1.3rem;
+    }
+
+    .vehicle-info-actions .price span {
+        font-size: 1rem;
+    }
+
+    .vehicle-info-actions button {
+        width: 100%;
+        font-size: 1rem;
+    }
+}

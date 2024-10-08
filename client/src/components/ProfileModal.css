@@ -1,0 +1,371 @@
+.profile-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-modal-wrapper .profile-modal {
+    width: 100%;
+    max-width: 500px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.profile-modal-wrapper .profile-modal .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: var(--bgGrey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.profile-modal-wrapper .profile-modal .close .close-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1px;
+    width: 20px;
+    background-color: transparent;
+}
+
+.profile-modal-wrapper .profile-modal .close .close-icon::before,
+.profile-modal-wrapper .profile-modal .close .close-icon::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    border-radius: 100vw;
+    background-color: var(--black);
+    transition: all 0.2s;
+}
+
+.profile-modal-wrapper .profile-modal .close .close-icon::before {
+    transform: translate(0) rotate(45deg);
+}
+
+.profile-modal-wrapper .profile-modal .close .close-icon::after {
+    transform: translate(0) rotate(-45deg);
+}
+
+.profile-modal-wrapper .profile-modal .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-modal-wrapper .profile-modal .profile-info .profile-info-icon {
+    display: flex;
+}
+
+.profile-modal-wrapper .profile-modal .profile-info .profile-info-icon img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.profile-modal-wrapper .profile-modal .profile-info .profile-info-dets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-modal-wrapper .profile-modal .profile-info .profile-info-dets h4 {
+    color: var(--textDarkGrey);
+    font-weight: 600;
+}
+
+.profile-modal-wrapper .profile-modal > button {
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 100vw;
+    text-decoration: none;
+    background-color: transparent;
+    background-color: var(--black);
+    color: var(--white);
+    font-weight: 500;
+    border: none;
+}
+
+.profile-modal-wrapper .profile-modal > button:focus {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-head
+    p
+    a {
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-head
+    p
+    a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+    transition: width 0.2s;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-head
+    p
+    a:hover::before {
+    width: 0%;
+    left: unset;
+    right: 0;
+}
+.profile-modal-wrapper .profile-modal .profile-rented-cars-section {
+    flex-grow: 1;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car {
+    background-color: var(--bgGrey);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-image {
+    display: flex;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-image
+    img {
+    height: 7rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
+    h4 {
+    color: var(--textDarkGrey);
+    line-height: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
+    .rented-car-dates {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
+    button {
+    background-color: transparent;
+    color: var(--black);
+    border: 2px solid var(--black);
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    border-radius: 100vw;
+    font-weight: 500;
+    margin-top: auto;
+    transition: background-color 0.3s;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
+    button:hover {
+    background-color: var(--white);
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
+    button:focus {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-modal-wrapper {
+        padding: 1rem;
+    }
+
+    .profile-modal-wrapper .profile-modal {
+        border-radius: 0.7rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media screen and (max-width: 481px) {
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car
+        .rented-car-image {
+        display: flex;
+        background-color: var(--white);
+    }
+
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car
+        .rented-car-image
+        img {
+        height: 10rem;
+    }
+
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car
+        .rented-car-text
+        h4 {
+        font-size: 0.8rem;
+    }
+
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car
+        .rented-car-text
+        h3 {
+        font-size: 1rem;
+    }
+
+    .profile-modal-wrapper
+        .profile-modal
+        .profile-rented-cars-section
+        .profile-rented-cars-section-body
+        .rented-car
+        .rented-car-text
+        button {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+}
