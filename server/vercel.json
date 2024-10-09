@@ -1,6 +1,12 @@
 {
     "version": 2,
     "builds": [{ "src": "*.js", "use": "@vercel/node" }],
+    "crons": [
+        {
+            "path": "/cancel-expired-rentals",
+            "schedule": "0 19 * * *"
+        }
+    ],
     "routes": [
         {
             "src": "/(.*)",

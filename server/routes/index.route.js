@@ -2,6 +2,7 @@ import express from "express";
 import authMiddleware from "../middlewares/authMiddleware.js";
 import Car from "../models/car.model.js";
 import RentedCar from "../models/rentedcars.model.js";
+import User from "../models/user.model.js";
 import cron from "node-cron";
 
 const router = express.Router();
@@ -130,7 +131,7 @@ router.post("/cancel-ride/:car_id", authMiddleware, async (req, res) => {
     }
 });
 
-cron.schedule("0 0 * * *", async () => {
+router.post("/cancel-expired-rentals", async (req, res) => {
     console.log("Running a task to cancel expired rentals");
     try {
         const now = new Date();
@@ -154,8 +155,16 @@ cron.schedule("0 0 * * *", async () => {
 
             console.log(`Rental ${rental._id} has been cancelled.`);
         }
+
+        return res.status(200).json({
+            message: "Expired rentals have been cancelled successfully!",
+        });
     } catch (error) {
-        console.error("Error in cron job:", error);
+        console.error("Error in canceling expired rentals:", error);
+        return res.status(500).json({
+            message: "Error cancelling expired rentals",
+            error: error.message,
+        });
     }
 });
 
