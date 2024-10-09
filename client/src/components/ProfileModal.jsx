@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { useToast } from '../contexts/ToastContext'
+import avatar from '../assets/avatar.png'
 
 const ProfileModal = ({ closeProfileModal }) => {
     let { user, logoutUser, authToken, userAuthentication } = useAuth();
@@ -73,9 +74,8 @@ const ProfileModal = ({ closeProfileModal }) => {
                         <img
                             src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
                             alt="Profile Icon"
-                            onError={(e) => { e.target.src = avatar }} // Fallback image
+                            onError={(e) => { e.target.src = avatar }}
                         />
-
                     </div>
                     <div className="profile-info-dets">
                         <h2>{user.name}</h2>
