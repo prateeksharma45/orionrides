@@ -70,7 +70,11 @@ const ProfileModal = ({ closeProfileModal }) => {
                 <h1>Profile</h1>
                 <div className="profile-info">
                     <div className="profile-info-icon">
-                        <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                        {
+                            user.avatar ? (
+                                <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                            ) : avatar
+                        }
                     </div>
                     <div className="profile-info-dets">
                         <h2>{user.name}</h2>

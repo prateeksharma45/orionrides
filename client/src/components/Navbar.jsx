@@ -3,6 +3,7 @@ import './Navbar.css'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
+import avatar from '../assets/avatar.png'
 
 const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
     let { authToken, user } = useAuth();
@@ -31,7 +32,11 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                     {
                         authToken ? (
                             <div className="profile-icon" onClick={openProfileModal}>
-                                <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                                {
+                                    user.avatar ? (
+                                        <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                                    ) : avatar
+                                }
                             </div>
                         ) : (
                             <div className="nav-right-btn">
@@ -61,7 +66,11 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                                         menuHandler();
                                     }}>
                                         <div className="menu-profile-icon">
-                                            <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                                            {
+                                                user.avatar ? (
+                                                    <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
+                                                ) : avatar
+                                            }
                                         </div>
                                         <div className="menu-profile-dets">
                                             <h1>{user.name}</h1>
