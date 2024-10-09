@@ -36,11 +36,11 @@ const RentalSteps = () => {
                             3
                         </div>
                         <div className="step-icon">
-                            <i className="fa-solid fa-envelope-open"></i>
+                            <i className="fa-solid fa-thumbs-up"></i>
                         </div>
                         <div className="step-body">
-                            <h3>Confirm via Email</h3>
-                            <p>Confirm your booking by clicking the link in the email we send you.</p>
+                            <h3>Rental Successful!</h3>
+                            <p>Your booking has been successfully completed. Get ready to enjoy your ride!</p>
                         </div>
                     </div>
                 </div>

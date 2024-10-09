@@ -3,7 +3,6 @@ import authMiddleware from "../middlewares/authMiddleware.js";
 import Car from "../models/car.model.js";
 import RentedCar from "../models/rentedcars.model.js";
 import User from "../models/user.model.js";
-import cron from "node-cron";
 
 const router = express.Router();
 
