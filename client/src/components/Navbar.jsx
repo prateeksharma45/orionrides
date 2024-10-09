@@ -32,11 +32,11 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                     {
                         authToken ? (
                             <div className="profile-icon" onClick={openProfileModal}>
-                                {
-                                    user.avatar ? (
-                                        <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
-                                    ) : avatar
-                                }
+                                <img
+                                    src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                    alt="Profile Icon"
+                                    onError={(e) => { e.target.src = avatar }}
+                                />
                             </div>
                         ) : (
                             <div className="nav-right-btn">
@@ -66,11 +66,11 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                                         menuHandler();
                                     }}>
                                         <div className="menu-profile-icon">
-                                            {
-                                                user.avatar ? (
-                                                    <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
-                                                ) : avatar
-                                            }
+                                            <img
+                                                src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                                alt="Profile Icon"
+                                                onError={(e) => { e.target.src = avatar }}
+                                            />
                                         </div>
                                         <div className="menu-profile-dets">
                                             <h1>{user.name}</h1>

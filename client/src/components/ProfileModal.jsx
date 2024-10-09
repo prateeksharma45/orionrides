@@ -70,11 +70,12 @@ const ProfileModal = ({ closeProfileModal }) => {
                 <h1>Profile</h1>
                 <div className="profile-info">
                     <div className="profile-info-icon">
-                        {
-                            user.avatar ? (
-                                <img src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`} alt="Profile Icon" />
-                            ) : avatar
-                        }
+                        <img
+                            src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                            alt="Profile Icon"
+                            onError={(e) => { e.target.src = avatar }} // Fallback image
+                        />
+
                     </div>
                     <div className="profile-info-dets">
                         <h2>{user.name}</h2>
