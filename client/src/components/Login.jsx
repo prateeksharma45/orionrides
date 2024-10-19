@@ -8,16 +8,19 @@ const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState
     let [formData, setFormData] = useState({
         email: "",
         password: ""
-    })
+    });
+
+    let [loading, setLoading] = useState(false);
 
     let inputHandler = (event) => {
         setFormData((prev) => (
             { ...prev, [event.target.name]: event.target.value }
-        ))
-    }
+        ));
+    };
 
     let handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
 
         try {
             let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, {
@@ -26,24 +29,27 @@ const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState
                 },
                 method: "POST",
                 body: JSON.stringify(formData)
-            })
+            });
             let data = await res.json();
-            setPreviousState('Login')
+            setPreviousState('Login');
             setCurrentState("Response");
             setResponse(data.message);
             if (res.ok) {
-                setIsSuccessful(true)
-                storeTokenInLS(data.token)
+                setIsSuccessful(true);
+                storeTokenInLS(data.token);
             } else {
-                setIsSuccessful(false)
+                setIsSuccessful(false);
             }
         } catch (error) {
             console.log("Error while login: ", error);
             setCurrentState("Response");
             setResponse('Something went wrong!');
-            setIsSuccessful(false)
+            setIsSuccessful(false);
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+
     return (
         <>
             <h1>Login</h1>
@@ -56,11 +62,13 @@ const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState
                     Password
                     <input type="password" placeholder='Enter Password' id='password' name='password' onChange={inputHandler} value={formData.password} required autoComplete='off' />
                 </label>
-                <button type='submit'>Login</button>
+                <button type='submit' disabled={loading}>
+                    {loading ? <span className="loader"></span> : 'Login'}
+                </button>
             </form>
             <p>No account yet?<br /><span onClick={() => setCurrentState("Sign Up")}>Click Here!</span></p>
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;

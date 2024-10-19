@@ -14,6 +14,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
 
     let [avatars, setAvatars] = useState([]);
     let [selectedAvatar, setSelectedAvatar] = useState("");
+    let [loading, setLoading] = useState(false);
 
     const handleSelection = (event) => {
         setSelectedAvatar(event.target.value);
@@ -28,6 +29,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
 
     let handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
 
         try {
             let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/register`, {
@@ -52,6 +54,8 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
             setCurrentState("Response");
             setResponse('Something went wrong!');
             setIsSuccessful(false);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -83,7 +87,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                                     name="avatar"
                                     value={avatar}
                                     onChange={handleSelection}
-                                    checked={selectedAvatar === avatar} // Set checked state to the selected avatar
+                                    checked={selectedAvatar === avatar}
                                 />
                                 <label htmlFor={`avatar${index + 1}`}>
                                     <img src={`${import.meta.env.VITE_BACKEND_URL}/${avatar}`} alt={`Avatar ${index + 1}`} width="100" />
@@ -104,7 +108,9 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                     Password
                     <input type="password" placeholder='Enter Password' id='password' name='password' onChange={inputHandler} value={formData.password} required autoComplete='off' />
                 </label>
-                <button type='submit'>Sign Up</button>
+                <button type='submit' disabled={loading}>
+                    {loading ? <span className="loader"></span> : 'Sign Up'}
+                </button>
             </form>
             <p>Already have an account?<br /><span onClick={() => setCurrentState("Login")}>Login Here!</span></p>
         </>
