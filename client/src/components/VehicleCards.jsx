@@ -69,6 +69,7 @@ const VehicleCards = ({ cars, searchInput, sortInput, setNoOfCars, isLoaded }) =
                     <>
                         <div className='vehicle-skeleton'></div>
                         <div className='vehicle-skeleton'></div>
+                        <div className='vehicle-skeleton'></div>
                     </>
                 )
             }

@@ -13,7 +13,20 @@
 .vehicle-skeleton {
     height: 450px;
     border-radius: 1rem;
-    background-color: var(--white);
+    background-color: var(--grey);
+    animation: vehicleCardsLoad 2s ease-in-out infinite;
+}
+
+@keyframes vehicleCardsLoad {
+    0% {
+        background-color: var(--grey);
+    }
+    50% {
+        background-color: var(--textGrey);
+    }
+    100% {
+        background-color: var(--grey);
+    }
 }
 
 .vehicle img {

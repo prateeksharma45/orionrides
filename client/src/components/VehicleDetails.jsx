@@ -12,7 +12,7 @@ import { LoginModalContext } from '../contexts/LoginModalContext'
 const VehicleDetails = () => {
     let { vehicleId } = useParams()
     let [carInfo, setCarInfo] = useState({})
-    let [loading, setLoading] = useState(true)  // Added loading state
+    let [loading, setLoading] = useState(true)
     let { authToken } = useAuth()
 
     let { handleLoginSignupModal } = useContext(LoginModalContext)
