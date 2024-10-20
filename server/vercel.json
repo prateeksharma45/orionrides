@@ -7,10 +7,10 @@
             "schedule": "0 0 * * *"
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "/"
+            "source": "/(.*)",
+            "destination": "/"
         }
     ],
     "headers": [
