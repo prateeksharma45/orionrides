@@ -97,13 +97,16 @@
     top: 7rem;
     display: flex;
     cursor: pointer;
+    background-color: var(--grey);
+    border-radius: 1rem;
+    overflow: hidden;
+    animation: vehicleDetailsLoad 2s ease-in-out infinite;
 }
 
 .vehicle-details-image img {
     height: 450px;
     width: 100%;
     object-fit: cover;
-    border-radius: 1rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -365,19 +368,19 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .vehicle-details-image {
-        position: relative;
-        top: unset;
-    }
-
     .vehicle-details-loader .vehicle-details-image-loader {
         height: 350px;
         border-radius: 0.7rem;
     }
 
+    .vehicle-details-image {
+        position: relative;
+        top: unset;
+        border-radius: 0.7rem;
+    }
+
     .vehicle-details-image img {
         height: 350px;
-        border-radius: 0.7rem;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
 
