@@ -223,6 +223,47 @@ nav {
     color: rgba(0, 0, 0, 0.7);
 }
 
+.menu .menu-profile .menu-profile-icon-loader {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--grey);
+    animation: menuUserLoad 2s ease-in-out infinite;
+}
+
+.menu .menu-profile .menu-profile-dets-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu .menu-profile .menu-profile-dets-loader .menu-profile-dets-text-loader {
+    height: 0.7rem;
+    width: 7rem;
+    background-color: var(--grey);
+    border-radius: 0.5rem;
+    animation: menuUserLoad 2s ease-in-out infinite;
+}
+
+@keyframes menuUserLoad {
+    0% {
+        background-color: var(--grey);
+    }
+    50% {
+        background-color: var(--textGrey);
+    }
+    100% {
+        background-color: var(--grey);
+    }
+}
+
+.menu
+    .menu-profile
+    .menu-profile-dets-loader
+    .menu-profile-dets-text-loader:nth-child(2) {
+    width: 10rem;
+}
+
 .menu > h1 {
     font-size: 1rem;
     text-transform: uppercase;

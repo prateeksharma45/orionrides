@@ -69,60 +69,75 @@ const ProfileModal = ({ closeProfileModal }) => {
                     <div className="close-icon"></div>
                 </div>
                 <h1>Profile</h1>
-                <div className="profile-info">
-                    <div className="profile-info-icon">
-                        <img
-                            src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
-                            alt="Profile Icon"
-                            onError={(e) => { e.target.src = avatar }}
-                        />
-                    </div>
-                    <div className="profile-info-dets">
-                        <h2>{user.name}</h2>
-                        <h4>{user.email}</h4>
-                    </div>
-                </div>
-                <button onClick={() => {
-                    closeProfileModal()
-                    logoutUser()
-                    showToast("You’ve been logged out!", 'success')
-                }}>Logout</button>
-                <div className="profile-rented-cars-section">
-                    <div className="profile-rented-cars-section-head">
-                        {
-                            user.cars_rented.length == 0 ? (
-                                <p>No rentals yet! <Link to='/vehicles' onClick={() => closeProfileModal()}>Explore cars now!</Link></p>
-                            ) : (
-                                <h3>Your rentals</h3>
-                            )
-                        }
-                    </div>
-                    {
-                        user.cars_rented.length != 0 ? (
-                            <div className="profile-rented-cars-section-body">
+                {
+                    user ? (
+                        <>
+                            <div className="profile-info">
+                                <div className="profile-info-icon">
+                                    <img
+                                        src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                        alt="Profile Icon"
+                                        onError={(e) => { e.target.src = avatar }}
+                                    />
+                                </div>
+                                <div className="profile-info-dets">
+                                    <h2>{user.name}</h2>
+                                    <h4>{user.email}</h4>
+                                </div>
+                            </div>
+                            <button onClick={() => {
+                                closeProfileModal()
+                                logoutUser()
+                                showToast("You’ve been logged out!", 'success')
+                            }}>Logout</button>
+                            <div className="profile-rented-cars-section">
+                                <div className="profile-rented-cars-section-head">
+                                    {
+                                        user.cars_rented.length == 0 ? (
+                                            <p>No rentals yet! <Link to='/vehicles' onClick={() => closeProfileModal()}>Explore cars now!</Link></p>
+                                        ) : (
+                                            <h3>Your rentals</h3>
+                                        )
+                                    }
+                                </div>
                                 {
-                                    user.cars_rented.map((rentedCar, index) => (
-                                        <div key={index} className='rented-car'>
-                                            <div className="rented-car-image">
-                                                <img src={`${rentedCar.car.image_url}?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`} alt="" />
-                                            </div>
-                                            <div className="rented-car-text">
-                                                <h4>{rentedCar.car.brand_name}</h4>
-                                                <h3>{rentedCar.car.car_name}</h3>
-                                                <div className='rented-car-dates'>
-                                                    <p>{new Date(rentedCar.pick_up_date).toLocaleDateString('en-GB')}</p>
-                                                    <i className="fa-solid fa-arrow-right"></i>
-                                                    <p>{new Date(rentedCar.drop_off_date).toLocaleDateString('en-GB')}</p>
-                                                </div>
-                                                <button onClick={() => cancelRental(rentedCar.car._id)}>Cancel Rental</button>
-                                            </div>
+                                    user.cars_rented.length != 0 ? (
+                                        <div className="profile-rented-cars-section-body">
+                                            {
+                                                user.cars_rented.map((rentedCar, index) => (
+                                                    <div key={index} className='rented-car'>
+                                                        <div className="rented-car-image">
+                                                            <img src={`${rentedCar.car.image_url}?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`} alt="" />
+                                                        </div>
+                                                        <div className="rented-car-text">
+                                                            <h4>{rentedCar.car.brand_name}</h4>
+                                                            <h3>{rentedCar.car.car_name}</h3>
+                                                            <div className='rented-car-dates'>
+                                                                <p>{new Date(rentedCar.pick_up_date).toLocaleDateString('en-GB')}</p>
+                                                                <i className="fa-solid fa-arrow-right"></i>
+                                                                <p>{new Date(rentedCar.drop_off_date).toLocaleDateString('en-GB')}</p>
+                                                            </div>
+                                                            <button onClick={() => cancelRental(rentedCar.car._id)}>Cancel Rental</button>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
                                         </div>
-                                    ))
+                                    ) : null
                                 }
                             </div>
-                        ) : null
-                    }
-                </div>
+                        </>
+                    ) : (
+                        <div className="profile-info-loader">
+                            <div className="profile-info-icon-loader"></div>
+                            <div className="profile-info-dets-loader">
+                                <div className="profile-info-dets-text-loader"></div>
+                                <div className="profile-info-dets-text-loader"></div>
+                            </div>
+                        </div>
+                    )
+                }
+
             </motion.div>
         </motion.div>
     )

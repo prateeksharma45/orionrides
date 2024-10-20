@@ -58,24 +58,37 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                             exit={{ top: '-100%' }}
                             transition={{ duration: 1, type: 'spring' }}
                             ref={menuRef} className="menu">
-
                             {
                                 authToken && (
                                     <div className="menu-profile" onClick={() => {
                                         openProfileModal();
                                         menuHandler();
                                     }}>
-                                        <div className="menu-profile-icon">
-                                            <img
-                                                src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
-                                                alt="Profile Icon"
-                                                onError={(e) => { e.target.src = avatar }}
-                                            />
-                                        </div>
-                                        <div className="menu-profile-dets">
-                                            <h1>{user.name}</h1>
-                                            <h3>{user.email}</h3>
-                                        </div>
+                                        {
+                                            user ? (
+                                                <>
+                                                    <div className="menu-profile-icon">
+                                                        <img
+                                                            src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                                            alt="Profile Icon"
+                                                            onError={(e) => { e.target.src = avatar }}
+                                                        />
+                                                    </div>
+                                                    <div className="menu-profile-dets">
+                                                        <h1>{user.name}</h1>
+                                                        <h3>{user.email}</h3>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div className="menu-profile-icon-loader"></div>
+                                                    <div className="menu-profile-dets-loader">
+                                                        <div className="menu-profile-dets-text-loader"></div>
+                                                        <div className="menu-profile-dets-text-loader"></div>
+                                                    </div>
+                                                </>
+                                            )
+                                        }
                                     </div>
                                 )
                             }

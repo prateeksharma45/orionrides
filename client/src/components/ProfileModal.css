@@ -101,6 +101,68 @@
     font-weight: 600;
 }
 
+.profile-modal-wrapper .profile-modal .profile-info-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-info-loader
+    .profile-info-icon-loader {
+    height: 5rem;
+    width: 5rem;
+    background-color: var(--grey);
+    border-radius: 50%;
+    animation: profileUserLoad 2s ease-in-out infinite;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-info-loader
+    .profile-info-dets-loader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-info-loader
+    .profile-info-dets-loader
+    .profile-info-dets-text-loader {
+    height: 0.7rem;
+    width: 7rem;
+    background-color: var(--grey);
+    border-radius: 0.5rem;
+    animation: profileUserLoad 2s ease-in-out infinite;
+}
+
+@keyframes profileUserLoad {
+    0% {
+        background-color: var(--grey);
+    }
+    50% {
+        background-color: var(--textGrey);
+    }
+    100% {
+        background-color: var(--grey);
+    }
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-info-loader
+    .profile-info-dets-loader
+    .profile-info-dets-text-loader:nth-child(2) {
+    width: 10rem;
+}
+
 .profile-modal-wrapper .profile-modal > button {
     width: 100%;
     cursor: pointer;
