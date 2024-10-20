@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 import avatar from '../assets/avatar.png'
 
 const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
-    let { authToken, user } = useAuth();
+    let { authToken, user, loading } = useAuth();
 
     let menuRef = useRef(null)
     let [menuOpen, setMenuOpen] = useState(false)
@@ -65,7 +65,15 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                                         menuHandler();
                                     }}>
                                         {
-                                            user ? (
+                                            loading ? (
+                                                <>
+                                                    <div className="menu-profile-icon-loader"></div>
+                                                    <div className="menu-profile-dets-loader">
+                                                        <div className="menu-profile-dets-text-loader"></div>
+                                                        <div className="menu-profile-dets-text-loader"></div>
+                                                    </div>
+                                                </>
+                                            ) : (
                                                 <>
                                                     <div className="menu-profile-icon">
                                                         <img
@@ -77,14 +85,6 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                                                     <div className="menu-profile-dets">
                                                         <h1>{user.name}</h1>
                                                         <h3>{user.email}</h3>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <div className="menu-profile-icon-loader"></div>
-                                                    <div className="menu-profile-dets-loader">
-                                                        <div className="menu-profile-dets-text-loader"></div>
-                                                        <div className="menu-profile-dets-text-loader"></div>
                                                     </div>
                                                 </>
                                             )

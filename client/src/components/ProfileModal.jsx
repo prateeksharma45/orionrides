@@ -7,7 +7,7 @@ import { useToast } from '../contexts/ToastContext'
 import avatar from '../assets/avatar.png'
 
 const ProfileModal = ({ closeProfileModal }) => {
-    let { user, logoutUser, authToken, userAuthentication } = useAuth();
+    let { user, logoutUser, authToken, userAuthentication, loading } = useAuth();
     let { showToast } = useToast()
 
     let profileModalBgRef = useRef(null)
@@ -70,7 +70,15 @@ const ProfileModal = ({ closeProfileModal }) => {
                 </div>
                 <h1>Profile</h1>
                 {
-                    user ? (
+                    loading ? (
+                        <div className="profile-info-loader">
+                            <div className="profile-info-icon-loader"></div>
+                            <div className="profile-info-dets-loader">
+                                <div className="profile-info-dets-text-loader"></div>
+                                <div className="profile-info-dets-text-loader"></div>
+                            </div>
+                        </div>
+                    ) : (
                         <>
                             <div className="profile-info">
                                 <div className="profile-info-icon">
@@ -127,14 +135,6 @@ const ProfileModal = ({ closeProfileModal }) => {
                                 }
                             </div>
                         </>
-                    ) : (
-                        <div className="profile-info-loader">
-                            <div className="profile-info-icon-loader"></div>
-                            <div className="profile-info-dets-loader">
-                                <div className="profile-info-dets-text-loader"></div>
-                                <div className="profile-info-dets-text-loader"></div>
-                            </div>
-                        </div>
                     )
                 }
 

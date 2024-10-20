@@ -7,6 +7,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState(localStorage.getItem("token"));
     let [user, setUser] = useState({})
+    let [loading, setLoading] = useState(false)
 
     const storeTokenInLS = (token) => {
         localStorage.setItem("token", token);
@@ -23,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     const userAuthentication = async () => {
         if (!authToken) return
 
+        setLoading(true);
         try {
             let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user`, {
                 headers: {
@@ -40,6 +42,8 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error("Error fetching user data:", error);
             setUser({});
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -53,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ authToken, storeTokenInLS, logoutUser, user, userAuthentication }}>
+        <AuthContext.Provider value={{ authToken, storeTokenInLS, logoutUser, user, userAuthentication, loading }}>
             {children}
         </AuthContext.Provider>
     );
