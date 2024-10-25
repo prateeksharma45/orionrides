@@ -85,6 +85,9 @@ form {
 form label {
     width: 100%;
     font-weight: 500;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 form label input {
@@ -193,6 +196,23 @@ form
     + label {
     outline: 2px solid var(--black);
     outline-offset: 2px;
+}
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container input {
+    width: 100%;
+    padding-right: 2rem;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

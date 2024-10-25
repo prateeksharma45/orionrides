@@ -83,7 +83,7 @@ const ProfileModal = ({ closeProfileModal }) => {
                             <div className="profile-info">
                                 <div className="profile-info-icon">
                                     <img
-                                        src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                        src={`${import.meta.env.VITE_BACKEND_URL}${user.avatar}`}
                                         alt="Profile Icon"
                                         onError={(e) => { e.target.src = avatar }}
                                     />

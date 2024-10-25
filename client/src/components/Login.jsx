@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import './LoginSignupModal.css'
+import { useState } from 'react';
+import './LoginSignupModal.css';
 import { useAuth } from '../contexts/AuthContext';
 
 const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState }) => {
-    let { storeTokenInLS } = useAuth()
+    let { storeTokenInLS } = useAuth();
 
     let [formData, setFormData] = useState({
         email: "",
@@ -11,6 +11,7 @@ const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState
     });
 
     let [loading, setLoading] = useState(false);
+    let [showPassword, setShowPassword] = useState(false);
 
     let inputHandler = (event) => {
         setFormData((prev) => (
@@ -56,19 +57,43 @@ const Login = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">
                     Email
-                    <input type="text" placeholder='Enter Email' id='email' name='email' onChange={inputHandler} value={formData.email} required autoComplete='off' />
+                    <input
+                        type="text"
+                        placeholder="Enter Email"
+                        id="email"
+                        name="email"
+                        onChange={inputHandler}
+                        value={formData.email}
+                        required
+                        autoComplete="off"
+                    />
                 </label>
                 <label htmlFor="password">
                     Password
-                    <input type="password" placeholder='Enter Password' id='password' name='password' onChange={inputHandler} value={formData.password} required autoComplete='off' />
+                    <div className="password-input-container">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter Password"
+                            id="password"
+                            name="password"
+                            onChange={inputHandler}
+                            value={formData.password}
+                            required
+                            autoComplete="off"
+                        />
+                        <i
+                            className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-toggle-icon`}
+                            onClick={() => setShowPassword(prev => !prev)}
+                        ></i>
+                    </div>
                 </label>
-                <button type='submit' disabled={loading}>
+                <button type="submit" disabled={loading}>
                     {loading ? <span className="loader"></span> : 'Login'}
                 </button>
             </form>
             <p>No account yet?<br /><span onClick={() => setCurrentState("Sign Up")}>Click Here!</span></p>
         </>
     );
-}
+};
 
 export default Login;

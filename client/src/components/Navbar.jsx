@@ -33,7 +33,7 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                         authToken ? (
                             <div className="profile-icon" onClick={openProfileModal}>
                                 <img
-                                    src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                    src={`${import.meta.env.VITE_BACKEND_URL}${user.avatar}`}
                                     alt="Profile Icon"
                                     onError={(e) => { e.target.src = avatar }}
                                 />
@@ -77,7 +77,7 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                                                 <>
                                                     <div className="menu-profile-icon">
                                                         <img
-                                                            src={`${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`}
+                                                            src={`${import.meta.env.VITE_BACKEND_URL}${user.avatar}`}
                                                             alt="Profile Icon"
                                                             onError={(e) => { e.target.src = avatar }}
                                                         />

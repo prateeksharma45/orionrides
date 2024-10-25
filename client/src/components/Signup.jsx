@@ -3,7 +3,7 @@ import './LoginSignupModal.css';
 import { useAuth } from '../contexts/AuthContext';
 
 const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState }) => {
-    let { storeTokenInLS } = useAuth()
+    let { storeTokenInLS } = useAuth();
 
     let [formData, setFormData] = useState({
         name: "",
@@ -15,6 +15,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
     let [avatars, setAvatars] = useState([]);
     let [selectedAvatar, setSelectedAvatar] = useState("");
     let [loading, setLoading] = useState(false);
+    let [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
     const handleSelection = (event) => {
         setSelectedAvatar(event.target.value);
@@ -45,7 +46,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
             setResponse(data.message);
             if (res.ok) {
                 setIsSuccessful(true);
-                storeTokenInLS(data.token)
+                storeTokenInLS(data.token);
             } else {
                 setIsSuccessful(false);
             }
@@ -90,7 +91,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                                     checked={selectedAvatar === avatar}
                                 />
                                 <label htmlFor={`avatar${index + 1}`}>
-                                    <img src={`${import.meta.env.VITE_BACKEND_URL}/${avatar}`} alt={`Avatar ${index + 1}`} width="100" />
+                                    <img src={`${import.meta.env.VITE_BACKEND_URL}${avatar}`} alt={`Avatar ${index + 1}`} width="100" />
                                 </label>
                             </div>
                         ))}
@@ -106,9 +107,24 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                 </label>
                 <label htmlFor="password">
                     Password
-                    <input type="password" placeholder='Enter Password' id='password' name='password' onChange={inputHandler} value={formData.password} required autoComplete='off' />
+                    <div className="password-input-container">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter Password"
+                            id="password"
+                            name="password"
+                            onChange={inputHandler}
+                            value={formData.password}
+                            required
+                            autoComplete="off"
+                        />
+                        <i
+                            className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"} password-toggle-icon`}
+                            onClick={() => setShowPassword(prev => !prev)}
+                        ></i>
+                    </div>
                 </label>
-                <button type='submit' disabled={loading}>
+                <button type="submit" disabled={loading}>
                     {loading ? <span className="loader"></span> : 'Sign Up'}
                 </button>
             </form>
