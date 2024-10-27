@@ -7,13 +7,19 @@
             "schedule": "0 0 * * *"
         }
     ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ],
     "headers": [
         {
             "source": "/avatars/(.*)",
             "headers": [
                 {
                     "key": "Access-Control-Allow-Origin",
-                    "value": "*"
+                    "value": "https://orionrides.vercel.app"
                 },
                 {
                     "key": "Access-Control-Allow-Methods",
