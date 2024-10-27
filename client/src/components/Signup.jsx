@@ -15,7 +15,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
     let [avatars, setAvatars] = useState([]);
     let [selectedAvatar, setSelectedAvatar] = useState("");
     let [loading, setLoading] = useState(false);
-    let [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
+    let [showPassword, setShowPassword] = useState(false);
 
     const handleSelection = (event) => {
         setSelectedAvatar(event.target.value);
