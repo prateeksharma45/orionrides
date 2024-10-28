@@ -130,7 +130,7 @@ router.post("/cancel-ride/:car_id", authMiddleware, async (req, res) => {
     }
 });
 
-router.post("/cancel-expired-rentals", async (req, res) => {
+router.get("/cancel-expired-rentals", async (req, res) => {
     console.log("Running a task to cancel expired rentals");
     try {
         const now = new Date().toISOString();
