@@ -133,7 +133,7 @@ router.post("/cancel-ride/:car_id", authMiddleware, async (req, res) => {
 router.post("/cancel-expired-rentals", async (req, res) => {
     console.log("Running a task to cancel expired rentals");
     try {
-        const now = new Date();
+        const now = new Date().toISOString();
         const expiredRentals = await RentedCar.find({
             drop_off_date: { $lt: now },
         });
