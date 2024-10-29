@@ -6,10 +6,6 @@ import User from "../models/user.model.js";
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//     res.send("This is the index route!");
-// });
-
 router.post("/book-ride/:car_id", authMiddleware, async (req, res) => {
     try {
         let user = req.user;

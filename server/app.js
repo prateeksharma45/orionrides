@@ -8,7 +8,6 @@ import path from "path";
 
 const app = express();
 
-// app.use(cors());
 app.use(
     cors({
         origin: [process.env.CORS_ORIGIN],
@@ -19,7 +18,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use("/avatars", express.static("public/avatars"));
+app.use("/avatars", express.static(path.join(process.cwd(), "public/avatars")));
 
 app.use("/", indexRouter);
 app.use("/api/user", userRouter);
