@@ -9,6 +9,10 @@ export default defineConfig({
                 target: process.env.VITE_BACKEND_URL,
                 changeOrigin: true,
             },
+            "/avatars": {
+                target: process.env.VITE_BACKEND_URL,
+                changeOrigin: true,
+            },
         },
     },
     plugins: [react()],
