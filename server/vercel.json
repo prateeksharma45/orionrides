@@ -12,7 +12,7 @@
     ],
     "crons": [
         {
-            "path": "/cancel-expired-rentals",
+            "path": "/api/cancel-expired-rentals",
             "schedule": "0 0 * * *"
         }
     ],
