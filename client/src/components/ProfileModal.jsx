@@ -20,7 +20,7 @@ const ProfileModal = ({ closeProfileModal }) => {
 
     const cancelRental = async (carId) => {
         try {
-            let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/cancel-ride/${carId}`, {
+            let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/cancel-ride/${carId}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${authToken}`

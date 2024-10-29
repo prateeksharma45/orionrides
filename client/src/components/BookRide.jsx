@@ -56,7 +56,7 @@ const BookRide = ({ closeBookRideModal, carId, getVehicleDets }) => {
     const BookRide = async () => {
         if (isFormValid()) {
             try {
-                let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/book-ride/${carId}`, {
+                let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/book-ride/${carId}`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${authToken}`
