@@ -19,21 +19,21 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
     });
 
     let [avatars] = useState([
-        { id: 1, path: avatar1 },
-        { id: 2, path: avatar2 },
-        { id: 3, path: avatar3 },
-        { id: 4, path: avatar4 },
-        { id: 5, path: avatar5 },
-        { id: 6, path: avatar6 },
+        { id: 1, name: 'avatar1', path: avatar1 },
+        { id: 2, name: 'avatar2', path: avatar2 },
+        { id: 3, name: 'avatar3', path: avatar3 },
+        { id: 4, name: 'avatar4', path: avatar4 },
+        { id: 5, name: 'avatar5', path: avatar5 },
+        { id: 6, name: 'avatar6', path: avatar6 },
     ]);
-    let [selectedAvatar, setSelectedAvatar] = useState("");
+    let [selectedAvatar, setSelectedAvatar] = useState('');
     let [loading, setLoading] = useState(false);
     let [showPassword, setShowPassword] = useState(false);
 
     const handleSelection = (event) => {
-        const selectedPath = event.target.value;
-        setSelectedAvatar(selectedPath);
-        setFormData((prev) => ({ ...prev, avatar: selectedPath }));
+        const selectedName = event.target.value;
+        setSelectedAvatar(selectedName);
+        setFormData((prev) => ({ ...prev, avatar: selectedName }));
     };
 
     let inputHandler = (event) => {
@@ -76,7 +76,7 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
 
     useEffect(() => {
         if (avatars.length > 0) {
-            const initialAvatar = avatars[0].path;
+            const initialAvatar = avatars[0].name;
             setSelectedAvatar(initialAvatar);
             setFormData((prev) => ({ ...prev, avatar: initialAvatar }));
         }
@@ -95,9 +95,9 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                                     type="radio"
                                     id={`avatar${avatar.id}`}
                                     name="avatar"
-                                    value={avatar.path}
+                                    value={avatar.name}
                                     onChange={handleSelection}
-                                    checked={selectedAvatar === avatar.path}
+                                    checked={selectedAvatar === avatar.name}
                                 />
                                 <label htmlFor={`avatar${avatar.id}`}>
                                     <img src={avatar.path} alt={`Avatar ${avatar.id}`} width="100" />

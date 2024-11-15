@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { useToast } from '../contexts/ToastContext';
+import avatar1 from '../assets/avatars/avatar1.png';
+import avatar2 from '../assets/avatars/avatar2.png';
+import avatar3 from '../assets/avatars/avatar3.png';
+import avatar4 from '../assets/avatars/avatar4.png';
+import avatar5 from '../assets/avatars/avatar5.png';
+import avatar6 from '../assets/avatars/avatar6.png';
 import avatarFallback from '../assets/avatars/avatar-fallback.png';
 
 const ProfileModal = ({ closeProfileModal }) => {
@@ -17,6 +23,17 @@ const ProfileModal = ({ closeProfileModal }) => {
             closeProfileModal();
         }
     };
+
+    const avatars = {
+        avatar1,
+        avatar2,
+        avatar3,
+        avatar4,
+        avatar5,
+        avatar6,
+    };
+
+    const getAvatarImage = (avatarName) => avatars[avatarName] || avatarFallback;
 
     const cancelRental = async (carId) => {
         try {
@@ -51,19 +68,19 @@ const ProfileModal = ({ closeProfileModal }) => {
             exit={{ opacity: 0 }}
             transition={{
                 duration: 0.3,
-                ease: "easeInOut",
+                ease: 'easeInOut',
             }}
             ref={profileModalBgRef}
             className="profile-modal-wrapper"
             onClick={handleBgClick}
         >
             <motion.div
-                initial={{ y: "2rem", opacity: 0 }}
+                initial={{ y: '2rem', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: "2rem", opacity: 0 }}
+                exit={{ y: '2rem', opacity: 0 }}
                 transition={{
                     duration: 0.3,
-                    ease: "backInOut",
+                    ease: 'backInOut',
                 }}
                 className="profile-modal"
             >
@@ -84,7 +101,7 @@ const ProfileModal = ({ closeProfileModal }) => {
                         <div className="profile-info">
                             <div className="profile-info-icon">
                                 <img
-                                    src={user.avatar}
+                                    src={getAvatarImage(user.avatar)}
                                     alt="Profile Icon"
                                     onError={(e) => {
                                         e.target.src = avatarFallback;
@@ -100,7 +117,7 @@ const ProfileModal = ({ closeProfileModal }) => {
                             onClick={() => {
                                 closeProfileModal();
                                 logoutUser();
-                                showToast("You’ve been logged out!", 'success');
+                                showToast('You’ve been logged out!', 'success');
                             }}
                         >
                             Logout
@@ -109,7 +126,10 @@ const ProfileModal = ({ closeProfileModal }) => {
                             <div className="profile-rented-cars-section-head">
                                 {user.cars_rented.length === 0 ? (
                                     <p>
-                                        No rentals yet! <Link to="/vehicles" onClick={closeProfileModal}>Explore cars now!</Link>
+                                        No rentals yet!{' '}
+                                        <Link to="/vehicles" onClick={() => closeProfileModal()}>
+                                            Explore cars now!
+                                        </Link>
                                     </p>
                                 ) : (
                                     <h3>Your rentals</h3>
@@ -137,7 +157,9 @@ const ProfileModal = ({ closeProfileModal }) => {
                                                         {new Date(rentedCar.drop_off_date).toLocaleDateString('en-GB')}
                                                     </p>
                                                 </div>
-                                                <button onClick={() => cancelRental(rentedCar.car._id)}>Cancel Rental</button>
+                                                <button onClick={() => cancelRental(rentedCar.car._id)}>
+                                                    Cancel Rental
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
