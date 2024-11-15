@@ -3,7 +3,7 @@ import './Navbar.css'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
-import avatar from '../assets/avatar.png'
+import avatarFallback from '../assets/avatars/avatar-fallback.png'
 
 const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
     let { authToken, user, loading } = useAuth();
@@ -33,9 +33,11 @@ const Navbar = ({ openProfileModal, handleLoginSignupModal }) => {
                         authToken ? (
                             <div className="profile-icon" onClick={openProfileModal}>
                                 <img
-                                    src={`${import.meta.env.VITE_BACKEND_URL}${user.avatar}`}
+                                    src={user.avatar}
                                     alt="Profile Icon"
-                                    onError={(e) => { e.target.src = avatar }}
+                                    onError={(e) => {
+                                        e.target.src = avatarFallback;
+                                    }}
                                 />
                             </div>
                         ) : (

@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import './LoginSignupModal.css';
 import { useAuth } from '../contexts/AuthContext';
+import avatar1 from '../assets/avatars/avatar1.png';
+import avatar2 from '../assets/avatars/avatar2.png';
+import avatar3 from '../assets/avatars/avatar3.png';
+import avatar4 from '../assets/avatars/avatar4.png';
+import avatar5 from '../assets/avatars/avatar5.png';
+import avatar6 from '../assets/avatars/avatar6.png';
 
 const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousState }) => {
     let { storeTokenInLS } = useAuth();
@@ -12,14 +18,22 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
         avatar: ""
     });
 
-    let [avatars, setAvatars] = useState([]);
+    let [avatars] = useState([
+        { id: 1, path: avatar1 },
+        { id: 2, path: avatar2 },
+        { id: 3, path: avatar3 },
+        { id: 4, path: avatar4 },
+        { id: 5, path: avatar5 },
+        { id: 6, path: avatar6 },
+    ]);
     let [selectedAvatar, setSelectedAvatar] = useState("");
     let [loading, setLoading] = useState(false);
     let [showPassword, setShowPassword] = useState(false);
 
     const handleSelection = (event) => {
-        setSelectedAvatar(event.target.value);
-        setFormData((prev) => ({ ...prev, avatar: event.target.value }));
+        const selectedPath = event.target.value;
+        setSelectedAvatar(selectedPath);
+        setFormData((prev) => ({ ...prev, avatar: selectedPath }));
     };
 
     let inputHandler = (event) => {
@@ -61,17 +75,12 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
     };
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/avatars`)
-            .then(response => response.json())
-            .then(data => {
-                setAvatars(data);
-                if (data.length > 0) {
-                    setSelectedAvatar(data[0]);
-                    setFormData((prev) => ({ ...prev, avatar: data[0] }));
-                }
-            })
-            .catch(error => console.error('Error fetching avatars: ', error));
-    }, []);
+        if (avatars.length > 0) {
+            const initialAvatar = avatars[0].path;
+            setSelectedAvatar(initialAvatar);
+            setFormData((prev) => ({ ...prev, avatar: initialAvatar }));
+        }
+    }, [avatars]);
 
     return (
         <>
@@ -80,18 +89,18 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
                 <div className="avatar-wrapper">
                     <p>Choose an avatar</p>
                     <div className="avatars">
-                        {avatars.map((avatar, index) => (
-                            <div key={index} className="avatar-option">
+                        {avatars.map((avatar) => (
+                            <div key={avatar.id} className="avatar-option">
                                 <input
                                     type="radio"
-                                    id={`avatar${index + 1}`}
+                                    id={`avatar${avatar.id}`}
                                     name="avatar"
-                                    value={avatar}
+                                    value={avatar.path}
                                     onChange={handleSelection}
-                                    checked={selectedAvatar === avatar}
+                                    checked={selectedAvatar === avatar.path}
                                 />
-                                <label htmlFor={`avatar${index + 1}`}>
-                                    <img src={`${import.meta.env.VITE_BACKEND_URL}${avatar}`} alt={`Avatar ${index + 1}`} width="100" />
+                                <label htmlFor={`avatar${avatar.id}`}>
+                                    <img src={avatar.path} alt={`Avatar ${avatar.id}`} width="100" />
                                 </label>
                             </div>
                         ))}
