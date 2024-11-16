@@ -61,6 +61,7 @@ router.post("/book-ride/:car_id", authMiddleware, async (req, res) => {
             phone_no: phone_no,
             address: address,
             pincode: pincode,
+            status: "active",
             total_price: totalPrice,
             pick_up_date: pickUpDate,
             drop_off_date: dropOffDate,
@@ -103,19 +104,22 @@ router.post("/cancel-ride/:car_id", authMiddleware, async (req, res) => {
             });
         }
 
-        let rentedCar = await RentedCar.findOneAndDelete({
-            owner: user._id,
-            car: car_id,
-        });
-
-        user.cars_rented = user.cars_rented.filter(
-            (val) => val.toString() !== rentedCar._id.toString()
+        let rentedCar = await RentedCar.findOneAndUpdate(
+            { owner: user._id, car: car_id },
+            { status: "cancelled" },
+            { new: true }
         );
-        await user.save();
+
+        if (!rentedCar) {
+            return res.status(404).json({
+                message: "Rental not found for this user and car!",
+            });
+        }
 
         res.json({
             message: "Car rental cancelled successfully!",
             car,
+            rentedCar,
         });
     } catch (error) {
         console.error("Error:", error);
@@ -132,6 +136,7 @@ router.get("/cancel-expired-rentals", async (req, res) => {
         const now = new Date().toISOString();
         const expiredRentals = await RentedCar.find({
             drop_off_date: { $lt: now },
+            status: { $ne: "expired" },
         });
 
         for (let rental of expiredRentals) {
@@ -140,19 +145,15 @@ router.get("/cancel-expired-rentals", async (req, res) => {
                 current_owner: null,
             });
 
-            await RentedCar.findByIdAndDelete(rental._id);
+            await RentedCar.findByIdAndUpdate(rental._id, {
+                status: "expired",
+            });
 
-            let user = await User.findById(rental.owner);
-            user.cars_rented = user.cars_rented.filter(
-                (val) => val.toString() !== rental._id.toString()
-            );
-            await user.save();
-
-            console.log(`Rental ${rental._id} has been cancelled.`);
+            console.log(`Rental ${rental._id} has been marked as expired.`);
         }
 
         return res.status(200).json({
-            message: "Expired rentals have been cancelled successfully!",
+            message: "Expired rentals have been updated successfully!",
         });
     } catch (error) {
         console.error("Error in canceling expired rentals:", error);

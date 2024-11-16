@@ -20,12 +20,12 @@ header::after {
 }
 
 header::before {
-    left: 1rem;
+    left: 0.75rem;
     box-shadow: -1rem -1rem var(--white);
 }
 
 header::after {
-    right: 1rem;
+    right: 0.75rem;
     box-shadow: 1rem -1rem var(--white);
 }
 

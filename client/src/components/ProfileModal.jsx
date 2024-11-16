@@ -137,12 +137,12 @@ const ProfileModal = ({ closeProfileModal }) => {
                             </div>
                             {user.cars_rented.length !== 0 && (
                                 <div className="profile-rented-cars-section-body">
-                                    {user.cars_rented.map((rentedCar, index) => (
+                                    {user.cars_rented.reverse().map((rentedCar, index) => (
                                         <div key={index} className="rented-car">
                                             <div className="rented-car-image">
                                                 <img
                                                     src={`${rentedCar.car.image_url}?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`}
-                                                    alt=""
+                                                    alt={`${rentedCar.car.car_name}`}
                                                 />
                                             </div>
                                             <div className="rented-car-text">
@@ -157,9 +157,17 @@ const ProfileModal = ({ closeProfileModal }) => {
                                                         {new Date(rentedCar.drop_off_date).toLocaleDateString('en-GB')}
                                                     </p>
                                                 </div>
-                                                <button onClick={() => cancelRental(rentedCar.car._id)}>
-                                                    Cancel Rental
-                                                </button>
+                                                {
+                                                    rentedCar.status == "expired" ? (
+                                                        <p>Rental Expired</p>
+                                                    ) : rentedCar.status == "cancelled" ? (
+                                                        <p>Rental Cancelled</p>
+                                                    ) : (
+                                                        <button onClick={() => cancelRental(rentedCar.car._id)}>
+                                                            Cancel Rental
+                                                        </button>
+                                                    )
+                                                }
                                             </div>
                                         </div>
                                     ))}

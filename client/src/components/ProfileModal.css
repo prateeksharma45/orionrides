@@ -296,6 +296,20 @@
     .profile-rented-cars-section-body
     .rented-car
     .rented-car-text
+    > p {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.profile-modal-wrapper
+    .profile-modal
+    .profile-rented-cars-section
+    .profile-rented-cars-section-body
+    .rented-car
+    .rented-car-text
     h4 {
     color: var(--textDarkGrey);
     line-height: 100%;

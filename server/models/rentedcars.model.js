@@ -14,7 +14,6 @@ const rentedCarSchema = new mongoose.Schema(
             type: String,
             required: true,
             trim: true,
-            // index: true,
         },
         age: {
             type: Number,
@@ -25,7 +24,6 @@ const rentedCarSchema = new mongoose.Schema(
             required: true,
             trim: true,
             unique: false,
-            // index: true,
         },
         phone_no: {
             type: String,
@@ -42,6 +40,11 @@ const rentedCarSchema = new mongoose.Schema(
         total_price: {
             type: Number,
             required: true,
+        },
+        status: {
+            type: String,
+            enum: ["active", "cancelled", "expired"],
+            default: "active",
         },
         rented_on: {
             type: Date,
