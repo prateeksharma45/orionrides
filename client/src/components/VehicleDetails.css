@@ -100,6 +100,7 @@
     background-color: var(--grey);
     border-radius: 1rem;
     overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     animation: vehicleDetailsLoad 2s ease-in-out infinite;
 }
 
@@ -107,7 +108,6 @@
     height: 450px;
     width: 100%;
     object-fit: cover;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .vehicle-details-image .location {
@@ -377,11 +377,11 @@
         position: relative;
         top: unset;
         border-radius: 0.7rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
 
     .vehicle-details-image img {
         height: 350px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
 
     .vehicle-details .location {
