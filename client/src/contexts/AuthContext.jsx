@@ -1,12 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useToast } from './ToastContext';
 
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    let { showToast } = useToast();
     const [authToken, setAuthToken] = useState(localStorage.getItem("token"));
     let [user, setUser] = useState({})
     let [loading, setLoading] = useState(false)
@@ -41,7 +39,6 @@ export const AuthProvider = ({ children }) => {
                 console.error("Failed to authenticate user");
                 setUser({});
                 logoutUser();
-                showToast("Failed to authenticate user!", 'error');
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
