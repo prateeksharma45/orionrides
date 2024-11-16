@@ -22,7 +22,10 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const userAuthentication = async () => {
-        if (!authToken) return
+        if (!authToken) {
+            logoutUser()
+            return
+        }
 
         setLoading(true);
         try {
