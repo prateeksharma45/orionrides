@@ -27,11 +27,24 @@ const BookRide = ({ closeBookRideModal, carId, getVehicleDets }) => {
     let [pageNo, setPageNo] = useState(0);
 
     const isFormValid = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[0-9]{10}$/;
+        const pincodeRegex = /^[0-9]{6}$/;
+
         return (
-            formData.name && formData.age && formData.email && formData.phone_no &&
-            formData.address && formData.pincode && formData.pick_up_date && formData.drop_off_date
+            formData.name.trim().length > 0 &&
+            formData.age && formData.age > 0 && formData.age < 120 &&
+            formData.email.trim().length > 0 && emailRegex.test(formData.email) &&
+            formData.phone_no.trim().length > 0 && phoneRegex.test(formData.phone_no) &&
+            formData.address.trim().length > 0 &&
+            formData.pincode.trim().length > 0 && pincodeRegex.test(formData.pincode) &&
+            formData.pick_up_date.trim().length > 0 &&
+            formData.drop_off_date.trim().length > 0 &&
+            new Date(formData.pick_up_date) <= new Date(formData.drop_off_date) &&
+            new Date(formData.pick_up_date) >= new Date()
         );
     };
+
 
     const formDisplay = () => {
         if (pageNo === 0) {
@@ -53,7 +66,7 @@ const BookRide = ({ closeBookRideModal, carId, getVehicleDets }) => {
         }
     };
 
-    const BookRide = async () => {
+    const BookRideFunction = async () => {
         if (isFormValid()) {
             try {
                 let res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/book-ride/${carId}`, {
@@ -76,14 +89,14 @@ const BookRide = ({ closeBookRideModal, carId, getVehicleDets }) => {
             }
             setPageNo(4);
         } else {
-            setResponse('Please fill out all the required fields.');
+            setResponse('Please ensure all fields are filled out and correctly formatted.');
             setIsSuccessful(false);
         }
     }
 
     useEffect(() => {
         if (pageNo === 4) {
-            BookRide()
+            BookRideFunction()
         }
     }, [pageNo])
 
