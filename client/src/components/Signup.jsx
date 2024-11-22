@@ -44,6 +44,24 @@ const Signup = ({ setCurrentState, setResponse, setIsSuccessful, setPreviousStat
 
     let handleSubmit = async (event) => {
         event.preventDefault();
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setResponse("Invalid email format.");
+            setCurrentState("Response");
+            setIsSuccessful(false);
+            setPreviousState("Sign Up");
+            return;
+        }
+
+        if (formData.password.length < 8) {
+            setResponse("Password must be at least 8 characters long.");
+            setCurrentState("Response");
+            setIsSuccessful(false);
+            setPreviousState("Sign Up");
+            return;
+        }
+
         setLoading(true);
 
         try {
