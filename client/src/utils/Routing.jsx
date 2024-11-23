@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import VehiclePage from '../components/VehiclePage'
 import VehicleDetails from '../components/VehicleDetails'
 import About from '../components/About'
+import NotFoundPage from '../components/NotFoundPage'
 
 const Routing = () => {
     let location = useLocation()
@@ -18,6 +19,7 @@ const Routing = () => {
                 <Route path='/vehicles' element={<VehiclePage />} />
                 <Route path='/vehicles/:vehicleId' element={<VehicleDetails />} />
                 <Route path='/about' element={<About />} />
+                <Route path='*' element={<NotFoundPage />} />
             </Routes>
         </AnimatePresence>
     )

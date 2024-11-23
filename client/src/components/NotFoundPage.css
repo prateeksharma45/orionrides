@@ -1,0 +1,77 @@
+.not-found-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bgGrey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 6rem 8rem;
+}
+
+.not-found-page h1 {
+    font-size: 2.5rem;
+}
+
+.not-found-page p {
+    font-size: 1.2rem;
+}
+
+.not-found-page a {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 100vw;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    transition: all 0.3s;
+}
+
+.not-found-page a i {
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.not-found-page a:hover {
+    background-color: transparent;
+    gap: 1rem;
+    color: var(--black);
+}
+
+.not-found-page a:hover i {
+    color: var(--black);
+}
+
+@media screen and (max-width: 1366px) {
+    .not-found-page {
+        padding: 6rem 3.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .not-found-page {
+        padding: 4rem 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .not-found-page {
+        padding: 3.5rem 0.5rem;
+    }
+
+    .footer-container .footer-top button {
+        padding: 0.4rem 0.8rem;
+    }
+}

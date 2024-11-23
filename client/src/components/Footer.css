@@ -1,8 +1,32 @@
 footer {
     width: 100%;
     background-color: var(--white);
-    border-radius: 1rem 1rem 0 0;
     margin-top: auto;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    box-shadow: -1rem 1rem var(--white);
+}
+
+footer::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    box-shadow: 1rem 1rem var(--white);
 }
 
 .footer-container {
@@ -56,7 +80,7 @@ footer {
 }
 
 .footer-container .footer-top button:hover {
-    background-color: var(--white);
+    background-color: transparent;
     gap: 1rem;
     color: var(--black);
 }
